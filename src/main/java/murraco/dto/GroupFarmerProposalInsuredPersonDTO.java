@@ -3,14 +3,12 @@ package murraco.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModelProperty;
-import murraco.model.common.ClassificationOfHealth;
-import murraco.model.common.Gender;
-import murraco.model.common.IdType;
 
 public class GroupFarmerProposalInsuredPersonDTO {
 
@@ -18,9 +16,9 @@ public class GroupFarmerProposalInsuredPersonDTO {
 	@NotBlank(message = "InitialId is mandatory")
 	private String initialId;
 
-	@ApiModelProperty(position = 1, example = "12", required = true)
-	@NotNull(message = "Age is mandatory")
-	private int age;
+	@ApiModelProperty(position = 1, example = "36221e42-a0000040-133dc830-59dccb1a", required = true)
+	@NotBlank(message = "BPMS InsuredPersonId is mandatory")
+	private String bpmsInsuredPersonId;
 
 	@ApiModelProperty(position = 2, example = "100000", required = true)
 	@NotNull(message = "proposedSumInsured is mandatory")
@@ -44,12 +42,12 @@ public class GroupFarmerProposalInsuredPersonDTO {
 
 	@ApiModelProperty(position = 7, example = "NRCNO", required = true)
 	@NotNull(message = "idType is mandatory")
-	private IdType idType;
+	private String idType;
 
 	@ApiModelProperty(position = 8, example = "123123123")
 	private String idNo;
 
-	@ApiModelProperty(position = 9, example = "U Aun Aung", required = true)
+	@ApiModelProperty(position = 9, example = "U Maung Maung", required = true)
 	@NotBlank(message = "fatherName is mandatory")
 	private String fatherName;
 
@@ -65,18 +63,13 @@ public class GroupFarmerProposalInsuredPersonDTO {
 	@NotNull(message = "dateOfBirth is mandatory")
 	private Date dateOfBirth;
 
-	@ApiModelProperty(position = 13, example = "FIRSTCLASS", required = true)
-	@NotNull(message = "clsOfHealth is mandatory")
-	private ClassificationOfHealth clsOfHealth;
-
 	@ApiModelProperty(position = 14, example = "MALE", required = true)
 	@NotNull(message = "gender is mandatory")
-	private Gender gender;
+	private String gender;
 
 	@ApiModelProperty(position = 15, example = "Yangon", required = true)
 	@NotNull(message = "residentAddress is mandatory")
 	private String residentAddress;
-	
 
 	@ApiModelProperty(position = 16, example = "AUNG ", required = true)
 	@NotNull(message = "firstName is mandatory")
@@ -98,14 +91,11 @@ public class GroupFarmerProposalInsuredPersonDTO {
 	@ApiModelProperty(position = 22, example = "ISSYS004000009724620062019", required = true)
 	@NotBlank(message = "townshipId is mandatory")
 	private String townshipId;
-	
+
+	@Valid
 	@ApiModelProperty(position = 21)
 	@NotNull(message = "insuredPersonBeneficiariesList is mandatory")
 	private List<GrouopFarmerInsuredPersonBeneficiariesDTO> insuredPersonBeneficiariesList;
-	
-	@ApiModelProperty(position = 22, example = "001", required = true)
-	@NotBlank(message = "personCode is mandatory")
-	private String personCode;
 
 	public String getInitialId() {
 		return initialId;
@@ -115,12 +105,12 @@ public class GroupFarmerProposalInsuredPersonDTO {
 		this.initialId = initialId;
 	}
 
-	public int getAge() {
-		return age;
+	public String getBpmsInsuredPersonId() {
+		return bpmsInsuredPersonId;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setBpmsInsuredPersonId(String bpmsInsuredPersonId) {
+		this.bpmsInsuredPersonId = bpmsInsuredPersonId;
 	}
 
 	public double getProposedSumInsured() {
@@ -163,14 +153,6 @@ public class GroupFarmerProposalInsuredPersonDTO {
 		this.basicTermPremium = basicTermPremium;
 	}
 
-	public IdType getIdType() {
-		return idType;
-	}
-
-	public void setIdType(IdType idType) {
-		this.idType = idType;
-	}
-
 	public String getIdNo() {
 		return idNo;
 	}
@@ -211,22 +193,21 @@ public class GroupFarmerProposalInsuredPersonDTO {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public ClassificationOfHealth getClsOfHealth() {
-		return clsOfHealth;
+	public String getIdType() {
+		return idType;
 	}
 
-	public void setClsOfHealth(ClassificationOfHealth clsOfHealth) {
-		this.clsOfHealth = clsOfHealth;
+	public void setIdType(String idType) {
+		this.idType = idType;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 
 	public String getResidentAddress() {
 		return residentAddress;
@@ -292,13 +273,4 @@ public class GroupFarmerProposalInsuredPersonDTO {
 		this.insuredPersonBeneficiariesList = insuredPersonBeneficiariesList;
 	}
 
-	public String getPersonCode() {
-		return personCode;
-	}
-
-	public void setPersonCode(String personCode) {
-		this.personCode = personCode;
-	}
-
-	
 }

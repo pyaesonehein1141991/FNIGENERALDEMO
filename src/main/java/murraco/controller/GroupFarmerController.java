@@ -33,18 +33,29 @@ public class GroupFarmerController {
 	@ApiResponses(value = { //
 			@ApiResponse(code = 400, message = "Something went wrong"), //
 			@ApiResponse(code = 403, message = "Access denied"), //
-			@ApiResponse(code = 422, message = "Username is already in use"), //
 			@ApiResponse(code = 500, message = "Expired or inv6alid JWT token") })
+	
 	public ResponseDTO<Object> submitproposal(@Valid @RequestBody GroupFarmerLifeProposalDTO groupFarmerProposalDTO) {
+		
+		//create farmer proposal
+		
+		//create response object
+		
 		ResponseListDTO dto = new ResponseListDTO();
-		List<String> policyNoList = new ArrayList<>();
+		List<ResponseListDTO> responseList = new ArrayList<>();
 		for(GroupFarmerProposalInsuredPersonDTO insuredPerson:groupFarmerProposalDTO.getProposalInsuredPersonList()) {
-			policyNoList.add(insuredPerson.getPersonCode().concat("/F/1904/0000000006"));
+			dto.setBpmsInsuredPersonId(insuredPerson.getBpmsInsuredPersonId());
+			dto.setPolicyNo("F/1904/0000000006");
+			dto.setProposalNo("FP/1904/0000000006");
+			dto.setGroupProposalNo("GFP/1904/0000000006");
+			if(insuredPerson.getCustomerID().equals(null) || insuredPerson.getCustomerID().isEmpty()) {
+				dto.setCustomerId("CUS111");
+			}
+			responseList.add(dto);
 		}
-		dto.setPolicyNoList(policyNoList);
 		ResponseDTO<Object> responseDTO = ResponseDTO.builder()
-				.status("Success!")
-				.body(dto).build();
+				.responseStatus("Success!")
+				.responseBody(responseList).build();
 		
 		return responseDTO;
 	}
