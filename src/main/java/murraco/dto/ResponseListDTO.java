@@ -1,21 +1,41 @@
 package murraco.dto;
 
-import java.util.ArrayList;
-import java.util.List;
 public class ResponseListDTO {
-	List<String> policyNoList;
-
-	public List<String> getPolicyNoList() {
-		if(null != policyNoList) {
-			return policyNoList;
-		}else {
-			return new ArrayList<>();
-		}
+	private String groupProposalNo;
+	private String bpmsInsuredPersonId;
+	private String proposalNo;
+	private String policyNo;
+	private String customerId;
+	public String getBpmsInsuredPersonId() {
+		return bpmsInsuredPersonId;
 	}
-
-	public void setPolicyNoList(List<String> policyNoList) {
-		this.policyNoList = policyNoList;
+	public void setBpmsInsuredPersonId(String bpmsInsuredPersonId) {
+		this.bpmsInsuredPersonId = bpmsInsuredPersonId;
 	}
-
+	public String getPolicyNo() {
+		return policyNo;
+	}
+	public void setPolicyNo(String policyNo) {
+		this.policyNo = policyNo;
+	}
+	public String getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+	public String getProposalNo() {
+		return proposalNo;
+	}
+	public void setProposalNo(String proposalNo) {
+		this.proposalNo = proposalNo;
+	}
+	public String getGroupProposalNo() {
+		return groupProposalNo;
+	}
+	public void setGroupProposalNo(String groupProposalNo) {
+		this.groupProposalNo = groupProposalNo;
+	}
+	
 	
 }

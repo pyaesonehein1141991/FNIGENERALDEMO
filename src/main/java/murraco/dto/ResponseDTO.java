@@ -6,11 +6,10 @@ import lombok.Data;
 @Data
 @Builder
 public class ResponseDTO<T> {
-	private String status;
+private String responseStatus;
 	
 	@Builder.Default
-	private String message = "Success!";
+	private String message = "Success";
 	
-	private T body;
-
+	private T responseBody; 
 }

@@ -51,6 +51,7 @@ public class UserController {
   }
 
   @PostMapping("/signup")
+  
   @ApiOperation(value = "${UserController.signup}")
   @ApiResponses(value = {//
       @ApiResponse(code = 400, message = "Something went wrong"), //
