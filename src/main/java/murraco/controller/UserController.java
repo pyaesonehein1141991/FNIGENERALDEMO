@@ -1,7 +1,6 @@
 package murraco.controller;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -51,7 +49,7 @@ public class UserController {
   }
 
   @PostMapping("/signup")
-  
+
   @ApiOperation(value = "${UserController.signup}")
   @ApiResponses(value = {//
       @ApiResponse(code = 400, message = "Something went wrong"), //
@@ -103,8 +101,8 @@ public class UserController {
   public String refresh(HttpServletRequest req) {
     return userService.refresh(req.getRemoteUser());
   }
-  
-  
+
+
   @PostMapping("/proposal")
   @ApiOperation(value = "${UserController.submitProposal}")
   @ApiResponses(value = {//
@@ -113,23 +111,24 @@ public class UserController {
       @ApiResponse(code = 422, message = "Username is already in use"), //
       @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
   public ResponseEntity<ProposalResponseDTO> submitProposal(@RequestBody ProposalDTO proposalDto) {
-	  ProposalResponseDTO dto = new ProposalResponseDTO();
-	  if(validateProposal(proposalDto)) {
-		  dto.setPolicyno("PO-HO/1111111/12-2019");
-		  dto.setResponseStatus("Proposal Submitting is success");
-		  return new ResponseEntity<ProposalResponseDTO>(dto,HttpStatus.OK);
-	  }else {
-		  dto.setPolicyno("");
-		  dto.setResponseStatus("Proposal Submitting is failed");
-		  return new ResponseEntity<ProposalResponseDTO>(dto,HttpStatus.NOT_ACCEPTABLE);
-	  }
+    ProposalResponseDTO dto = new ProposalResponseDTO();
+    if (validateProposal(proposalDto)) {
+      dto.setPolicyno("PO-HO/1111111/12-2019");
+      dto.setResponseStatus("Proposal Submitting is success");
+      return new ResponseEntity<ProposalResponseDTO>(dto, HttpStatus.OK);
+    } else {
+      dto.setPolicyno("");
+      dto.setResponseStatus("Proposal Submitting is failed");
+      return new ResponseEntity<ProposalResponseDTO>(dto, HttpStatus.NOT_ACCEPTABLE);
+    }
   }
-  
+
   private boolean validateProposal(ProposalDTO proposalDto) {
-	  if(proposalDto.getSubmittedDate() == null || proposalDto.getProposalInsuredPersonList() == null || proposalDto.getProposalInsuredPersonList().isEmpty()) {
-		  return false;
-	  }
-	  return true;
+    if (proposalDto.getSubmittedDate() == null || proposalDto.getProposalInsuredPersonList() == null
+        || proposalDto.getProposalInsuredPersonList().isEmpty()) {
+      return false;
+    }
+    return true;
   }
 
 }
