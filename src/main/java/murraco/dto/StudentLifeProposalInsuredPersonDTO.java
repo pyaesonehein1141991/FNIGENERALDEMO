@@ -1,8 +1,10 @@
 package murraco.dto;
 
 import java.util.Date;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import org.springframework.web.multipart.MultipartFile;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import murraco.model.common.Gender;
@@ -90,4 +92,73 @@ public class StudentLifeProposalInsuredPersonDTO {
   @ApiModelProperty(position = 20, example = "ISSYS004000009724620062019", required = true)
   @NotBlank(message = "townshipId is mandatory")
   private String townshipId;
+
+  // need field by thk
+  @ApiModelProperty(position = 21, example = "10", required = true)
+  @NotBlank(message = "Age is mandatory")
+  private String age;
+
+  @ApiModelProperty(position = 22, example = "true")
+  private boolean approve;
+
+  @ApiModelProperty(position = 23, example = "true")
+  private boolean needMedicalCheckup;
+
+  @ApiModelProperty(position = 24, example = "need a field", required = true)
+  @NotBlank(message = "rejectReason is mandatory")
+  private String rejectReason;
+
+  @ApiModelProperty(position = 25, example = "ISSYS004001000000000104062019", required = true)
+  @NotNull(message = "residentTownshipid is mandatory")
+  private String residentTownshipId;
+
+  @ApiModelProperty(position = 26, example = "ISSYS0120001000000000129032013", required = true)
+  @NotNull(message = "relationshipid is mandatory")
+  private String relationShipId;
+
+  @ApiModelProperty(position = 27, example = "09969281638", required = true)
+  @NotBlank(message = "phone is mandatory")
+  private String phone;
+
+  @ApiModelProperty(position = 28, example = "U Tun Tun", required = true)
+  @NotBlank(message = "parentName is mandatory")
+  private String parentName;
+
+  @ApiModelProperty(position = 29, example = "NRCNO", required = true)
+  @NotBlank(message = "parentType is mandatory")
+  private String parentIdType;
+
+  @ApiModelProperty(position = 30, example = "1628943", required = true)
+  @NotBlank(message = "parentIdNO is mandatory")
+  private String parentIdNo;
+
+  @ApiModelProperty(position = 31, example = "1999-12-16", required = true)
+  @NotBlank(message = "parentDOB is mandatory")
+  private String parentDOB;
+
+  @ApiModelProperty(position = 32, example = "ISSYS0120001000000000129032013", required = true)
+  @NotNull(message = "gradeInfoId is mandatory")
+  private String gradeInfoId;
+
+
+  @ApiModelProperty(position = 33)
+  private MultipartFile[] insuredpersonattachmentList;
+
+
+  @Valid
+  @ApiModelProperty(position = 17, required = true)
+  @NotNull(message = "birthCertificateAttachment is mandatory")
+  private MultipartFile[] birthCertificateAttachment;
+
+  @Valid
+  @ApiModelProperty(position = 17, required = true)
+  @NotNull(message = "surveyQuestionAnswerList is mandatory")
+  private MultipartFile[] surveyQuestionAnswerList;
+
+
+  @ApiModelProperty(position = 17)
+  private MultipartFile[] insuredPersonPolicyHistoryRecordList;
+
+
+
 }
