@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import murraco.dto.ResponseDTO;
@@ -22,7 +25,7 @@ import murraco.dto.StudentLifeProposalDTO;
 
 @RestController
 @RequestMapping("/studentlife")
-@Api(tags = "Student_Life")
+@Api(tags = "Student-Life")
 public class StudentLifeController {
 
 	@Autowired
@@ -34,6 +37,35 @@ public class StudentLifeController {
 			@ApiResponse(code = 403, message = "Access denied"),
 			@ApiResponse(code = 500, message = "Expired or invalid JWT token") })
 	public ResponseDTO<Object> submitproposal(@Valid @RequestBody StudentLifeProposalDTO studentLifeProposalDTO) {
+
+		ResponseListDTO dto = new ResponseListDTO();
+		List<ResponseListDTO> responseList = new ArrayList<>();
+
+		studentLifeProposalDTO.getProposalInsuredPersonList().stream().forEach(insuredPerson -> {
+			dto.setBpmsInsuredPersonId(insuredPerson.getBpmsInsuredPersonId());
+			dto.setPolicyNo("S/1904/0000000006");
+			dto.setProposalNo("SP/1904/0000000006");
+			if (insuredPerson.getCustomerID().equals(null) || insuredPerson.getCustomerID().isEmpty()) {
+				dto.setCustomerId("CUS111");
+			}
+			responseList.add(dto);
+		});
+
+		ResponseDTO<Object> responseDTO = ResponseDTO.builder().responseStatus("Success!").responseBody(responseList)
+				.build();
+
+		return responseDTO;
+
+	}
+
+	@PostMapping(value = "/submitProposalFile", consumes = { "multipart/form-data", "application/json" })
+	@ApiOperation(value = "${StudentLifeController.submitProposalFile}", produces = "application/json")
+	@ApiResponses(value = { @ApiResponse(code = 400, message = "Something went wrong"),
+			@ApiResponse(code = 403, message = "Access denied"),
+			@ApiResponse(code = 500, message = "Expired or invalid JWT token") })
+	public ResponseDTO<Object> submitproposalFile(@Valid @RequestBody StudentLifeProposalDTO studentLifeProposalDTO,
+			@ApiParam(name = "proposalAttachment", value = "Select the file to Upload", required = true) @RequestPart(value = "proposalAttachment", required = true) MultipartFile proposalAttachment,
+			@ApiParam(name = "insuredPersonAttachment", value = "Select the file to Upload", required = true) @RequestPart(value = "insuredPersonAttachment") MultipartFile personAttachment) {
 
 		ResponseListDTO dto = new ResponseListDTO();
 		List<ResponseListDTO> responseList = new ArrayList<>();
