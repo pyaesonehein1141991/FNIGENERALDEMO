@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import org.springframework.web.multipart.MultipartFile;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -66,19 +65,6 @@ public class StudentLifeProposalDTO {
   @ApiModelProperty(position = 14, example = "FirstClass", required = true)
   private String customerClsOfHealth;
 
-
-  @ApiModelProperty(position = 15)
-  private MultipartFile[] customerMedicalCheckUpAttachmentList;
-
-  @Valid
-  @ApiModelProperty(position = 16, required = true)
-  @NotNull(message = "customerSurveyQuestionAnswerList is mandatory")
-  private MultipartFile[] customerSurveyQuestionAnswerList;
-
-
-
-  @ApiModelProperty(position = 17)
-  private MultipartFile[] attachmentList;
 
 
 }

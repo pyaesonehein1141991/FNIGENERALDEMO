@@ -1,10 +1,8 @@
 package murraco.dto;
 
 import java.util.Date;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import org.springframework.web.multipart.MultipartFile;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import murraco.model.common.Gender;
@@ -139,25 +137,6 @@ public class StudentLifeProposalInsuredPersonDTO {
   @ApiModelProperty(position = 32, example = "ISSYS0120001000000000129032013", required = true)
   @NotNull(message = "gradeInfoId is mandatory")
   private String gradeInfoId;
-
-
-  @ApiModelProperty(position = 33)
-  private MultipartFile[] insuredpersonattachmentList;
-
-
-  @Valid
-  @ApiModelProperty(position = 17, required = true)
-  @NotNull(message = "birthCertificateAttachment is mandatory")
-  private MultipartFile[] birthCertificateAttachment;
-
-  @Valid
-  @ApiModelProperty(position = 17, required = true)
-  @NotNull(message = "surveyQuestionAnswerList is mandatory")
-  private MultipartFile[] surveyQuestionAnswerList;
-
-
-  @ApiModelProperty(position = 17)
-  private MultipartFile[] insuredPersonPolicyHistoryRecordList;
 
 
 
