@@ -3,6 +3,7 @@ package murraco.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -37,6 +38,7 @@ public class StudentLifeProposalDTO {
 	@ApiModelProperty(position = 6, example = "ISSYS022000009634116052019")
 	private String saleManId;
 
+	@Valid
 	@ApiModelProperty(position = 7, required = true)
 	@NotNull(message = "proposalInsuredPersonList is mandatory")
 	private List<StudentLifeProposalInsuredPersonDTO> proposalInsuredPersonList;

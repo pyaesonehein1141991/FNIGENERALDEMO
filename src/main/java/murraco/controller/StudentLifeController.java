@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +22,6 @@ import murraco.dto.StudentLifeProposalDTO;
 @RequestMapping("/studentlife")
 @Api(tags = "Student-Life")
 public class StudentLifeController {
-
-	@Autowired
-	private ModelMapper modelMapper;
 
 	@PostMapping("/submitproposal")
 	@ApiOperation(value = "${StudentLifeController.submitproposal}")
