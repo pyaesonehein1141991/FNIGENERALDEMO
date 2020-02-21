@@ -1,14 +1,15 @@
 package murraco.dto;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import murraco.model.common.Gender;
-import murraco.model.common.IdType;
+import murraco.dto.studentlife.SurveyQuestionAnswerDTO;
 
 @Data
 public class StudentLifeProposalInsuredPersonDTO {
@@ -43,7 +44,7 @@ public class StudentLifeProposalInsuredPersonDTO {
 
 	@ApiModelProperty(position = 7, example = "NRCNO", required = true)
 	@NotNull(message = "idType is mandatory")
-	private IdType idType;
+	private String idType;
 
 	@ApiModelProperty(position = 8, example = "123123123")
 	private String idNo;
@@ -66,54 +67,52 @@ public class StudentLifeProposalInsuredPersonDTO {
 
 	@ApiModelProperty(position = 13, example = "MALE", required = true)
 	@NotNull(message = "gender is mandatory")
-	private Gender gender;
+	private String gender;
 
 	@ApiModelProperty(position = 14, example = "Yangon", required = true)
 	@NotNull(message = "residentAddress is mandatory")
 	private String residentAddress;
 
-	@ApiModelProperty(position = 15, example = "AUNG ", required = true)
+	@ApiModelProperty(position = 16, example = "AUNG ", required = true)
 	@NotNull(message = "firstName is mandatory")
 	private String firstName;
 
-	@ApiModelProperty(position = 16, example = "AUNG")
+	@ApiModelProperty(position = 15, example = "AUNG")
 	private String middleName;
 
-	@ApiModelProperty(position = 17, example = "AUNG")
+	@ApiModelProperty(position = 16, example = "AUNG")
 	private String lastName;
 
-	@ApiModelProperty(position = 18, example = "ISSYS011000009823001042019", required = true)
-	@NotBlank(message = "occupationID is mandatory")
-	private String occupationID;
-
-	@ApiModelProperty(position = 19, example = "ISSYS001000005575112092016")
-	private String customerID;
-
-	@ApiModelProperty(position = 20, example = "ISSYS004000009724620062019", required = true)
+	@ApiModelProperty(position = 17, example = "ISSYS004000009724620062019", required = true)
 	@NotBlank(message = "townshipId is mandatory")
 	private String townshipId;
 
-	@ApiModelProperty(position = 21, example = "ISSYS0120001000000000129032013", required = true)
+	@ApiModelProperty(position = 18, example = "ISSYS0120001000000000129032013", required = true)
 	@NotBlank(message = "relationshipId is mandatory")
 	private String relationshipId;
 
-	@ApiModelProperty(position = 22, example = "ISSCH001000000000111232019")
+	@ApiModelProperty(position = 19, example = "ISSCH001000000000111232019")
 	private String schoolId;
 
-	@ApiModelProperty(position = 23, example = "ISSYS048000000000107082019")
+	@ApiModelProperty(position = 20, example = "ISSYS048000000000107082019")
 	private String gradeInfo;
 
-	@ApiModelProperty(position = 24, example = "Daw Hla Hla", required = true)
+	@ApiModelProperty(position = 21, example = "Daw Hla Hla", required = true)
 	@NotBlank(message = "parentName is mandatory")
 	private String motherName;
 
-	@ApiModelProperty(position = 25, example = "NRCNO")
-	private IdType motherIdType;
+	@ApiModelProperty(position = 22, example = "NRCNO")
+	private String motherIdType;
 
-	@ApiModelProperty(position = 26, example = "1628943")
+	@ApiModelProperty(position = 23, example = "1628943")
 	private String motherIdNo;
 
-	@ApiModelProperty(position = 27, example = "1999-12-16")
+	@ApiModelProperty(position = 24, example = "1999-12-16")
 	private Date motherDOB;
+
+	@Valid
+	@ApiModelProperty(position = 25, required = true)
+	@NotNull(message = "SurveyQuestionAnswerDTO is mandatory")
+	private List<SurveyQuestionAnswerDTO> questionAnswer;
 
 }

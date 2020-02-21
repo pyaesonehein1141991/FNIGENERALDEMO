@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiResponses;
 import murraco.dto.GroupFarmerLifeProposalDTO;
 import murraco.dto.GroupFarmerProposalInsuredPersonDTO;
 import murraco.dto.ResponseDTO;
-import murraco.dto.ResponseListDTO;
+import murraco.dto.GroupFarmerResponseDTO;
 
 @RestController
 @RequestMapping("/groupfarmer")
@@ -33,8 +33,8 @@ public class GroupFarmerController {
 
 	public ResponseDTO<Object> submitproposal(@Valid @RequestBody GroupFarmerLifeProposalDTO groupFarmerProposalDTO) {
 
-		ResponseListDTO dto = new ResponseListDTO();
-		List<ResponseListDTO> responseList = new ArrayList<>();
+		GroupFarmerResponseDTO dto = new GroupFarmerResponseDTO();
+		List<GroupFarmerResponseDTO> responseList = new ArrayList<>();
 		for (GroupFarmerProposalInsuredPersonDTO insuredPerson : groupFarmerProposalDTO
 				.getProposalInsuredPersonList()) {
 			dto.setBpmsInsuredPersonId(insuredPerson.getBpmsInsuredPersonId());

@@ -1,5 +1,4 @@
 murraco\configuration\SwaggerConfig.class
-murraco\dto\ResponseListDTO.class
 murraco\repository\UserRepository.class
 murraco\dto\ProposalInsuredPersonDTO.class
 murraco\exception\APIExceptionHandler.class
@@ -10,6 +9,7 @@ murraco\security\WebSecurityConfig.class
 murraco\security\MyUserDetails.class
 murraco\service\UserService.class
 murraco\dto\CustomerDto.class
+murraco\dto\studentlife\SurveyQuestionAnswerDTO.class
 murraco\model\common\Gender.class
 murraco\model\commonentity\TownshipCode.class
 murraco\model\commonentity\Country.class
@@ -33,14 +33,19 @@ murraco\model\commonentity\SaleMan.class
 murraco\model\commonentity\Township.class
 murraco\dto\UserResponseDTO.class
 murraco\model\User.class
+murraco\dto\GroupFarmerResponseDTO.class
 murraco\dto\GroupFarmerLifeProposalDTO.class
+murraco\dto\StudentLifeProposalDTO.class
 murraco\model\common\ProposalStatus.class
+murraco\dto\StudentLifeReponseDTO$StudentLifeReponseDTOBuilder.class
+murraco\dto\StudentLifeReponseDTO.class
 murraco\dto\ContentInfoDto.class
 murraco\model\common\ProposalType.class
 murraco\model\common\OfficeAddress.class
 murraco\dto\GrouopFarmerInsuredPersonBeneficiariesDTO.class
 murraco\dto\NameDto.class
 murraco\model\commonentity\Occupation.class
+murraco\controller\StudentLifeController.class
 murraco\dto\GroupFarmerProposalDTO.class
 murraco\model\common\Name.class
 murraco\security\JwtTokenProvider.class
@@ -62,8 +67,10 @@ murraco\model\common\IdType.class
 murraco\exception\GlobalExceptionHandlerController$1.class
 murraco\model\common\ResidentAddress.class
 murraco\model\customer\Customer.class
+murraco\dto\StudentLifeResponseDTO.class
 murraco\model\common\CustomerStatus.class
 murraco\model\common\FamilyInfo.class
 murraco\model\relationShip\RelationShip.class
+murraco\dto\StudentLifeProposalInsuredPersonDTO.class
 murraco\model\groupfarmer\GroupFarmerProposal.class
 murraco\dto\ProposalDTO.class

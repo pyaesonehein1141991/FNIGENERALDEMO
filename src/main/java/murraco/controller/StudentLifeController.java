@@ -15,8 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import murraco.dto.ResponseDTO;
-import murraco.dto.ResponseListDTO;
 import murraco.dto.StudentLifeProposalDTO;
+import murraco.dto.StudentLifeResponseDTO;
 
 @RestController
 @RequestMapping("/studentlife")
@@ -30,14 +30,15 @@ public class StudentLifeController {
 			@ApiResponse(code = 500, message = "Expired or invalid JWT token") })
 	public ResponseDTO<Object> submitproposal(@Valid @RequestBody StudentLifeProposalDTO studentLifeProposalDTO) {
 
-		ResponseListDTO dto = new ResponseListDTO();
-		List<ResponseListDTO> responseList = new ArrayList<>();
+		StudentLifeResponseDTO dto = new StudentLifeResponseDTO();
+		List<StudentLifeResponseDTO> responseList = new ArrayList<>();
 
 		studentLifeProposalDTO.getProposalInsuredPersonList().stream().forEach(insuredPerson -> {
 			dto.setBpmsInsuredPersonId(insuredPerson.getBpmsInsuredPersonId());
 			dto.setPolicyNo("S/1904/0000000006");
 			dto.setProposalNo("SP/1904/0000000006");
-			if (insuredPerson.getCustomerID().equals(null) || insuredPerson.getCustomerID().isEmpty()) {
+			if (studentLifeProposalDTO.getCustomerID().equals(null)
+					|| studentLifeProposalDTO.getCustomerID().isEmpty()) {
 				dto.setCustomerId("CUS111");
 			}
 			responseList.add(dto);
