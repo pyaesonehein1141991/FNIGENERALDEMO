@@ -16,8 +16,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import murraco.dto.GroupFarmerLifeProposalDTO;
 import murraco.dto.GroupFarmerProposalInsuredPersonDTO;
-import murraco.dto.ResponseDTO;
 import murraco.dto.GroupFarmerResponseDTO;
+import murraco.dto.ResponseDTO;
 
 @RestController
 @RequestMapping("/groupfarmer")
@@ -37,13 +37,13 @@ public class GroupFarmerController {
 		List<GroupFarmerResponseDTO> responseList = new ArrayList<>();
 		for (GroupFarmerProposalInsuredPersonDTO insuredPerson : groupFarmerProposalDTO
 				.getProposalInsuredPersonList()) {
-			dto.setBpmsInsuredPersonId(insuredPerson.getBpmsInsuredPersonId());
 			dto.setPolicyNo("F/1904/0000000006");
 			dto.setProposalNo("FP/1904/0000000006");
-			dto.setGroupProposalNo("GFP/1904/0000000006");
-			if (insuredPerson.getCustomerID().equals(null) || insuredPerson.getCustomerID().isEmpty()) {
-				dto.setCustomerId("CUS111");
-			}
+			// dto.setGroupProposalNo("GFP/1904/0000000006");
+			/*
+			 * if (insuredPerson.getCustomerID().equals(null) || insuredPerson.getCustomerID().isEmpty()) {
+			 * dto.setCustomerId("CUS111"); }
+			 */
 			responseList.add(dto);
 		}
 		ResponseDTO<Object> responseDTO = ResponseDTO.builder().responseStatus("Success!").responseBody(responseList)
