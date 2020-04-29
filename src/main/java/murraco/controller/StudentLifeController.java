@@ -34,13 +34,12 @@ public class StudentLifeController {
 		List<StudentLifeResponseDTO> responseList = new ArrayList<>();
 
 		studentLifeProposalDTO.getProposalInsuredPersonList().stream().forEach(insuredPerson -> {
-			dto.setBpmsInsuredPersonId(insuredPerson.getBpmsInsuredPersonId());
 			dto.setPolicyNo("S/1904/0000000006");
 			dto.setProposalNo("SP/1904/0000000006");
-			if (studentLifeProposalDTO.getCustomerID().equals(null)
-					|| studentLifeProposalDTO.getCustomerID().isEmpty()) {
-				dto.setCustomerId("CUS111");
-			}
+			/*
+			 * if (studentLifeProposalDTO.getCustomerID().equals(null) ||
+			 * studentLifeProposalDTO.getCustomerID().isEmpty()) { }
+			 */
 			responseList.add(dto);
 		});
 
