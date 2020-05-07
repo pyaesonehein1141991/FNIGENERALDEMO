@@ -29,7 +29,7 @@ public class GroupFarmerController {
 	@ApiResponses(value = { //
 			@ApiResponse(code = 400, message = "Something went wrong"), //
 			@ApiResponse(code = 403, message = "Access denied"), //
-			@ApiResponse(code = 500, message = "Expired or inv6alid JWT token") })
+			@ApiResponse(code = 500, message = "Expired or invalid JWT token") })
 
 	public ResponseDTO<Object> submitproposal(@Valid @RequestBody GroupFarmerLifeProposalDTO groupFarmerProposalDTO) {
 
@@ -46,8 +46,7 @@ public class GroupFarmerController {
 			 */
 			responseList.add(dto);
 		}
-		ResponseDTO<Object> responseDTO = ResponseDTO.builder().responseStatus("Success!").responseBody(responseList)
-				.build();
+		ResponseDTO<Object> responseDTO = ResponseDTO.builder().status("Success!").responseBody(responseList).build();
 
 		return responseDTO;
 	}

@@ -15,24 +15,23 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import murraco.dto.ResponseDTO;
 
 @ControllerAdvice
-public class APIExceptionHandler extends ResponseEntityExceptionHandler{
+public class APIExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@Override
-	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		FieldError fieldError = ex.getBindingResult().getFieldError();
-		ResponseDTO<Object> responseDTO = ResponseDTO.builder()
-				.responseStatus(status.toString())
+		ResponseDTO<Object> responseDTO = ResponseDTO.builder().status(status.toString())
 				.message(fieldError.getDefaultMessage()).build();
 		return ResponseEntity.badRequest().body(responseDTO);
 	}
-	
-	  @ExceptionHandler(ConstraintViolationException.class)
-	    public final ResponseEntity<Object> handleConstraintViolationException(Exception ex, WebRequest request) {
 
-	        ResponseDTO<Object> responseDTO = ResponseDTO.builder()
-	            .responseStatus(HttpStatus.BAD_REQUEST.toString())
-	            .message(ex.getMessage()).build();
+	@ExceptionHandler(ConstraintViolationException.class)
+	public final ResponseEntity<Object> handleConstraintViolationException(Exception ex, WebRequest request) {
 
-	        return ResponseEntity.badRequest().body(responseDTO);
-	    }
+		ResponseDTO<Object> responseDTO = ResponseDTO.builder().status(HttpStatus.BAD_REQUEST.toString())
+				.message(ex.getMessage()).build();
+
+		return ResponseEntity.badRequest().body(responseDTO);
+	}
 }

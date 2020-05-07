@@ -42,3 +42,12 @@ UserController:
   submitProposal: Create proposal and return policy no
 GroupFarmerController:
   submitproposal: Create Group farmer Proposal and return policy no
+AgentController:
+  agents: Get All Agents
+BranchController:
+  branches: Get All Branches
+BankController:
+  banks: Get All Banks
+CustomerController:
+  customers: Get All Customers
+ 
